@@ -29,7 +29,9 @@ public class ContactStoreService {
     static List<String> getResourceFileAsString(String fileName) throws IOException {
         ClassLoader classLoader = ClassLoader.getSystemClassLoader();
         try (InputStream is = classLoader.getResourceAsStream(fileName)) {
-            if (is == null) throw new IOException();
+            if (is == null) {
+                throw new IOException();
+            }
             try (InputStreamReader isr = new InputStreamReader(is);
                  BufferedReader reader = new BufferedReader(isr)) {
                 return reader.lines().toList();
